@@ -1,5 +1,6 @@
+import firebase from "firebase";
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-const firebaseConfig = {
+const firebaseApp = firebase.initializeApp({
     apiKey: "AIzaSyBxI2k7BFSX1y8yeAyRMexQEoVYWmpBni8",
     authDomain: "todo-app-nvk.firebaseapp.com",
     databaseURL: "https://todo-app-nvk.firebaseio.com",
@@ -8,4 +9,8 @@ const firebaseConfig = {
     messagingSenderId: "49337496003",
     appId: "1:49337496003:web:e11fe45e280ab63e838d76",
     measurementId: "G-SCXWWW2HNZ"
-};
+});
+
+const db = firebaseApp.firestore();
+
+export default db;

@@ -1,14 +1,23 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button, FormControl, Input, InputLabel } from '@material-ui/core';
 import './App.css';
 import Todo from './Todo'
+import db from './firebase';
 
 // We can simply add javascript within curly braces {}
 
 function App() {
-  const [todos, setTodos] = useState(['wake up{1 + 1}', 'watering the plants'])
+  const [todos, setTodos] = useState([])
   const [input, setInput] = useState('')
-  console.log(input);
+  //when the app loads, we need to listen to the dataase and fetch new todos as they get added/removed
+  // console.log(input);
+  useEffect(() => {
+    //this code here.. fires when the app.js loads
+    db.collection('todos').onSnapshot(snapshot => {
+      // console.log(snapshot.docs.map(doc=>doc.data()));
+      setTodos(snapshot.docs.map(doc => doc.data().todo))
+    })
+  }, []);
   const addTodo = (event) => {
     //this will fire off when we click the button
     event.preventDefault();     // will stop the REFRESH
