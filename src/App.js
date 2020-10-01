@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Button, FormControl, Input, InputLabel } from '@material-ui/core';
 import './App.css';
+import Todo from './Todo'
 
 // We can simply add javascript within curly braces {}
 
@@ -19,21 +20,26 @@ function App() {
   return (
     <div className="App">
       <h1> hello navin </h1>
-      <FormControl>
-        <InputLabel> Write a Todo</InputLabel>
-        <Input value={input} onChange={event => setInput(event.target.value)} />
-        <Button disabled={!input} variant="contained" color="primary" type="submit" onClick={addTodo}>
-          Primary
+      <form>
+        <FormControl>
+          <InputLabel> Write a Todo</InputLabel>
+          <Input value={input} onChange={event => setInput(event.target.value)} />
+          <Button disabled={!input} variant="contained" color="primary" type="submit" onClick={addTodo}>
+            Add Todo
         </Button>
-        {/* <button type="submit" onClick={addTodo}>Add Todo</button> */}
-        <ul>
-          {todos.map(todo => (
-            <li>{todo}</li>
-          ))
-          }
+        </FormControl>
+      </form>
+      {/* <button type="submit" onClick={addTodo}>Add Todo</button> */}
 
-        </ul>
-      </FormControl>
+      <ul>
+        {todos.map(todo => (
+          <Todo text={todo} />
+          // <li>{todo}</li>
+        ))
+        }
+
+      </ul>
+
 
 
 
