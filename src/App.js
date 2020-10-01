@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button } from '@material-ui/core';
+import { Button, FormControl, Input, InputLabel } from '@material-ui/core';
 import './App.css';
 
 // We can simply add javascript within curly braces {}
@@ -19,8 +19,9 @@ function App() {
   return (
     <div className="App">
       <h1> hello navin </h1>
-      <form>
-        <input value={input} onChange={event => setInput(event.target.value)} />
+      <FormControl>
+        <InputLabel> Write a Todo</InputLabel>
+        <Input value={input} onChange={event => setInput(event.target.value)} />
         <Button disabled={!input} variant="contained" color="primary" type="submit" onClick={addTodo}>
           Primary
         </Button>
@@ -32,7 +33,7 @@ function App() {
           }
 
         </ul>
-      </form>
+      </FormControl>
 
 
 
